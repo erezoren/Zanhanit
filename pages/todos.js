@@ -15,8 +15,8 @@ export default function Todos(props) {
     <div className={styles.container}>
      <h1>TODOS</h1>
      <ul>
-        {todos.map(t=>{
-           return  <li>{t}</li>
+        {todos.map((t,idx)=>{
+           return  <li key={idx}>{t}</li>
         })}
         </ul>
         <a href='./'>Home</a>
