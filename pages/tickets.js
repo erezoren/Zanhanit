@@ -69,7 +69,7 @@ export default function Tickets(props) {
           <tbody>
           {
             Object.keys(tickets || {}).map((name, idx) => {
-             return <tr>
+             return <tr key={idx}>
                 <td>{idx}</td>
                 <td>{name}</td>
                 <td>
