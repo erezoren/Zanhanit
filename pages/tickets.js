@@ -76,7 +76,7 @@ export default function Tickets(props) {
                   <ul>
                     {
                       tickets[name].map(ticket => {
-                        return <li>{ticket}</li>
+                        return <li key={ticket}>{ticket}</li>
                       })
 
                     }
