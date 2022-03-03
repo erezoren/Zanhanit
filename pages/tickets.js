@@ -34,7 +34,7 @@ export default function Tickets(props) {
     tickets.push(ticketNumber)
     await setDoc(doc(db, "tickets", dateStamp()), {[name]: tickets},
         {merge: true});
-    //await Router.replace(Router.asPath)
+    await Router.replace(Router.asPath)
   }
 
   const getTicketsByDateAndName = async (name) => {
