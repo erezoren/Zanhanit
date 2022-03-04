@@ -4,7 +4,7 @@ if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
       projectId: process.env.projectId,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      clientEmail: process.env.client_email,
       privateKey: process.env.privateKey.replace(/\\n/g, '\n'),
     }),
     databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
