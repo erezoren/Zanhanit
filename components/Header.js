@@ -1,22 +1,22 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {dateStamp} from "../lib/common_utils";
 import {useState} from "react";
+import {Logo} from "./Logo";
 
 export const Header = (props) => {
 
-  const [date,setDate] = useState(new Date().toString())
+  const [date, setDate] = useState(new Date().toString())
 
-  setInterval(()=>{
+  setInterval(() => {
     setDate(new Date().toString())
-  },1000)
+  }, 1000)
 
   return (
-      <div>
+      <div dir={"rtl"}>
         <Navbar bg="light" expand="lg" dir={"rtl"}>
           <Container>
-
-            <Navbar.Brand href="#home">פאב הצנחנית</Navbar.Brand>
+           <Logo/>
+            <Navbar.Brand href="#home">פאב הצנחנית - להבות חביבה</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav"/>
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
