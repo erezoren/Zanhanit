@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../images/לוגו.png";
+import logo from "../images/logo.png";
 
 export const Logo = (props)=>{
 
