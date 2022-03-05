@@ -7,7 +7,7 @@ export default function Home(props) {
       <div className={styles.container}>
         <Header/>
         <div className={styles.container} dir="rtl">
-          <span className={homeStyle.welcomeTitle}>פאב הצנחנית להבות חביבה</span>
+          <span className={homeStyle.welcomeTitle}><h1 className="display-1">פאב הצנחנית להבות חביבה</h1></span>
         </div>
       </div>
   )
