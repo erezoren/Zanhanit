@@ -31,7 +31,7 @@ export default function Pictures(props) {
           picturesRef.current.push(url);
         }).then(res => {
           //TODO: set false when really ends
-          if (picturesRef.current.length > 220) {
+          if (picturesRef.current.length > 100) {
             setLoading(false)
           }
         })
