@@ -43,6 +43,11 @@ export default function Tickets(props) {
     return tickets.data()[name] || [];
   }
 
+  function sortTicketsMap() {
+    return Object.keys(tickets || {}).sort(
+        (name1, name2) => name1.localeCompare(name2));
+  }
+
   return (
       <div className={styles.container} dir="rtl">
         <Header/>
@@ -68,27 +73,28 @@ export default function Tickets(props) {
           </thead>
           <tbody>
           {
-            Object.keys(tickets || {}).map((name, idx) => {
-             return <tr key={idx}>
-                <td>{idx}</td>
-                <td>{name}</td>
-                <td>
-                  <ul>
-                    {
-                      tickets[name].map(ticket => {
-                        return <li key={ticket}>{ticket}</li>
-                      })
+            sortTicketsMap().map(
+                (name, idx) => {
+                  return <tr key={idx}>
+                    <td>{idx}</td>
+                    <td>{name}</td>
+                    <td>
+                      <ul>
+                        {
+                          tickets[name].map(ticket => {
+                            return <li key={ticket}>{ticket}</li>
+                          })
 
-                    }
-                  </ul>
+                        }
+                      </ul>
 
-                </td>
-              </tr>
-            })
-            }
-            </tbody>
-            </Table>
-            </div>
-            )
-
+                    </td>
+                  </tr>
+                })
           }
+          </tbody>
+        </Table>
+      </div>
+  )
+
+}
