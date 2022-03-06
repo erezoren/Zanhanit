@@ -1,54 +1,30 @@
 import styles from '../styles/Home.module.css'
 import {Header} from "../components/Header";
 import Carousel from 'react-bootstrap/Carousel';
-import {listAllPictures} from "../lib/picturesHandler";
-import {useEffect, useRef, useState} from "react";
-import {Loader} from "../components/Loader";
+import {useState} from "react";
+import {getAndCachePictures} from "../lib/picturesHandlerServer";
+import {listAllPictures} from "../lib/picturesHandlerClient";
 
 let _ = require('lodash/core');
 
 export async function getServerSideProps(context) {
   return {
     props: {
-      pictures: []
+      pictures: await getAndCachePictures()
     },
   }
 }
 
 export default function Pictures(props) {
-  const picturesRef = useRef([]);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchPictures = async () => {
-      let allpics = await listAllPictures();
-      return allpics.map(async (pic) => {
-        return await pic;
-      })
-    };
-    fetchPictures().then(res => {
-      let allPIcs = res.map(pic => {
-        return pic.then(url => {
-          picturesRef.current.push(url);
-        }).then(res => {
-          //TODO: set false when really ends
-          if (picturesRef.current.length > 200) {
-            setLoading(false)
-          }
-        })
-
-      })
-    })
-  }, [])
-
+  const {pictures} = props;
+  console.log(pictures)
   return (
       <div className={styles.container} dir="rtl">
         <Header/>
         <div style={{textAlign: "center"}}>
-
           <Carousel variant="dark" fade={true} wrap={true} touch={true}>
-            {loading && <Loader/>}
-            {!loading &&
-            picturesRef.current.map((pic, idx) => {
+            {pictures.map((pic, idx) => {
               return <Carousel.Item key={idx} interval={3000}>
                 <img
                     src={pic}
@@ -59,7 +35,6 @@ export default function Pictures(props) {
                 </Carousel.Caption>
               </Carousel.Item>
             })
-
             }
           </Carousel>
         </div>

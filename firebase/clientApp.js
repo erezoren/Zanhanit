@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app'
 import { getFirestore} from 'firebase/firestore'
-import {getStorage,ref,listAll} from "firebase/storage";
+import {getStorage} from "firebase/storage";
 
 const clientCredentials = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,

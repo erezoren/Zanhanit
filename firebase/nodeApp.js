@@ -7,6 +7,7 @@ if (!admin.apps.length) {
       clientEmail: process.env.client_email,
       privateKey: process.env.privateKey.replace(/\\n/g, '\n'),
     }),
+    storageBucket:process.env.storageBucket,
     databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
   })
 }
