@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.css'
-import {Header} from "../components/Header";
+import {Header} from "../components/common/Header";
 import Carousel from 'react-bootstrap/Carousel';
 import {useState} from "react";
 import {getAndCachePictures} from "../lib/picturesHandlerServer";
 import {Image} from "react-bootstrap";
-import {ImageDisplay} from "../components/ImageDisplay";
+import {ImageDisplay} from "../components/common/ImageDisplay";
 
 let _ = require('lodash/core');
 

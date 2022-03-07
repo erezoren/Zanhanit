@@ -1,6 +1,6 @@
 import styles from '../styles/Home.module.css'
 import homeStyle from '../styles/home-page.module.css'
-import {Header} from "../components/Header";
+import {Header} from "../components/common/Header";
 
 export default function Home(props) {
   return (

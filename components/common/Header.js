@@ -1,6 +1,6 @@
 import {Container, Nav, Navbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import componentsStyle from '../styles/components-page.module.css'
+import componentsStyle from '../../styles/components-page.module.css'
 
 import {useState} from "react";
 import {Logo} from "./Logo";
