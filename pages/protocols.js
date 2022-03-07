@@ -7,7 +7,11 @@ export default function Protocols(props) {
       <div className={styles.container}>
         <Header/>
         <div className={styles.container} dir="rtl">
-          <span className={homeStyle.welcomeTitle}><h1 className="display-1">פאב הצנחנית להבות חביבה</h1></span>
+          <div className="embed-responsive embed-responsive-16by9">
+            <iframe className="embed-responsive-item"
+                    src="https://docs.google.com/document/d/1PMT72COp4xVNFpMwQdzeSP_99GN7uuKOqcr4_Vp1ZYg/edit?usp=sharing"
+                    allowFullScreen></iframe>
+          </div>
         </div>
       </div>
   )

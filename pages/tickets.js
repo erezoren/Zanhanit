@@ -4,7 +4,6 @@ import {useEffect, useState} from 'react';
 import {db} from "../firebase/clientApp";
 import {doc, getDoc, setDoc} from 'firebase/firestore'
 import {dateStamp} from "../lib/common_utils";
-import Router from "next/router"
 import {Button, Form, Stack} from "react-bootstrap";
 import {Header} from "../components/common/Header";
 import axios from "axios";
@@ -29,13 +28,14 @@ export default function Tickets(props) {
   const [ticketNumber, setTicketNumber] = useState(null);
   const [selectedDate, setSelectedDate] = useState(allDatesSorted[0]);
   const [selectedTickets, setSelectedTickets] = useState(tickets);
+  const [nonce, setNonce] = useState(0);
 
   useEffect(() => {
     axios.get(`/api/tickets?date=${selectedDate}`)
     .then((response) => {
       setSelectedTickets(response.data);
     });
-  }, [selectedDate])
+  }, [selectedDate, nonce])
 
   async function addNewTicket() {
     if (_.isEmpty(name.trim()) || _.isEmpty(ticketNumber)) {
@@ -48,7 +48,9 @@ export default function Tickets(props) {
     tickets.push(ticketNumber)
     await setDoc(doc(db, "tickets", dateStamp()), {[name]: tickets},
         {merge: true});
-    await Router.replace(Router.asPath)
+    setNonce(x => x + 1);
+    setName("");
+    setTicketNumber(0);
   }
 
   const getTicketsByDateAndName = async (name) => {
@@ -63,10 +65,12 @@ export default function Tickets(props) {
         <Stack direction="horizontal" gap={3}>
           <Form.Control className="me-auto" placeholder="שם מלא"
                         isInvalid={_.isEmpty(name.trim())}
+                        value={name}
                         onChange={(e) => setName(e.target.value)}/>
           <Form.Control className="me-auto" placeholder="מספר כרטיס"
                         type="number" style={{width: "40%"}}
-                        isInvalid={_.isEmpty(ticketNumber)}
+                        isInvalid={_.isEmpty(ticketNumber) || ticketNumber == 0}
+                        value={ticketNumber}
                         onChange={(e) => setTicketNumber(e.target.value)}/>
           <Button variant="secondary" onClick={addNewTicket}>הוסף</Button>
           <div className="vr"/>
