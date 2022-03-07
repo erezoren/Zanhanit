@@ -22,9 +22,10 @@ export async function getServerSideProps(context) {
 
 export default function Tickets(props) {
   const {tickets, allDates} = props;
+  const allDatesSorted = allDates.filter(id=>id!='null').sort().reverse();
   const [name, setName] = useState("");
   const [ticketNumber, setTicketNumber] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(allDates.filter(id=>id!='null')[0]);
+  const [selectedDate, setSelectedDate] = useState(allDatesSorted[0]);
   const [selectedTickets,setSelectedTickets] = useState(tickets);
 
   useEffect(()=>{
@@ -74,14 +75,13 @@ export default function Tickets(props) {
         </Stack>
         <div>
           <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant="warning" id="dropdown-basic">
               {selectedDate}
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
               {
-                allDates.filter(id=>id!='null').sort(
-                    (date1, date2) => date2 -date1).map((date) => {
+                allDatesSorted.map((date) => {
                   return <Dropdown.Item key={date} onClick={()=>setSelectedDate(date)}>{date}</Dropdown.Item>
                 })
               }
