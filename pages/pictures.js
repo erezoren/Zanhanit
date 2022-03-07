@@ -3,7 +3,7 @@ import {Header} from "../components/Header";
 import Carousel from 'react-bootstrap/Carousel';
 import {useState} from "react";
 import {getAndCachePictures} from "../lib/picturesHandlerServer";
-import {listAllPictures} from "../lib/picturesHandlerClient";
+import {Loader} from "../components/Loader";
 
 let _ = require('lodash/core');
 
@@ -17,22 +17,22 @@ export async function getServerSideProps(context) {
 
 export default function Pictures(props) {
   const [loading, setLoading] = useState(true);
+
   const {pictures} = props;
   console.log(pictures)
   return (
       <div className={styles.container} dir="rtl">
         <Header/>
         <div style={{textAlign: "center"}}>
-          <Carousel variant="dark" fade={true} wrap={true} touch={true}>
-            {pictures.map((pic, idx) => {
+
+          <Carousel variant="dark" fade={true} pause={false}>
+            {pictures.filter(
+                pic => pic.toLowerCase().endsWith(".jpg") || pic.endsWith(
+                    ".png")).map((pic, idx) => {
               return <Carousel.Item key={idx} interval={3000}>
-                <img
+                <img className={"img-fluid"}
                     src={pic}
-                    width={"80%"}
                 />
-                <Carousel.Caption>
-                  <h3>Slide label</h3>
-                </Carousel.Caption>
               </Carousel.Item>
             })
             }
