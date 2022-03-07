@@ -1,5 +1,7 @@
+import {Button, Image, Modal} from "react-bootstrap";
+
 export  const  ImageDisplay=(props)=>{
-const {imageUrl,onClose}  = props;
+const {imageUrl}  = props;
 
     return(
         <Modal
@@ -14,10 +16,10 @@ const {imageUrl,onClose}  = props;
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-               <Image fluid={true} src={imageUrl}/>
+               <Image fluid={true} width={"100%"} src={imageUrl}/>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onClose}>Close</Button>
+                <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
     )
