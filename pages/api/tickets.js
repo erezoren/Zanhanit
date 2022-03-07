@@ -1,9 +1,8 @@
-const ticketsHandler = require("../../lib/ticketsHandler")
+import {getTickets} from "../../lib/ticketsHandler";
+
 export default function handler(req, res) {
-  //const body = JSON.parse(req.body)
- /* ticketsHandler.addTicket(body.name, body.ticket_number)
-  .then(addTicketRes => {
-    res.status(200).send(req);
-  })*/
-  res.status(200).json(req);
+  getTickets(req.query.date).then(tickets=>{
+    res.status(200).json(tickets);
+  })
+
 }

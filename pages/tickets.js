@@ -1,27 +1,38 @@
 import styles from '../styles/Home.module.css'
-import {getTickets} from '../lib/ticketsHandler';
-import {useState} from 'react';
+import {getAllDates, getTickets} from '../lib/ticketsHandler';
+import {useEffect, useState} from 'react';
 import {db} from "../firebase/clientApp";
 import {doc, getDoc, setDoc} from 'firebase/firestore'
 import {dateStamp} from "../lib/common_utils";
 import Router from "next/router"
-import {Button, Form, Stack, Table} from "react-bootstrap";
+import {Button, Dropdown, Form, Stack, Table} from "react-bootstrap";
 import {Header} from "../components/Header";
+import axios from "axios";
 
 let _ = require('lodash/core');
 
 export async function getServerSideProps(context) {
   return {
     props: {
-      tickets: await getTickets(dateStamp())
+      tickets: await getTickets(dateStamp()),
+      allDates: await getAllDates()
     },
   }
 }
 
 export default function Tickets(props) {
-  const {tickets} = props;
+  const {tickets, allDates} = props;
   const [name, setName] = useState("");
   const [ticketNumber, setTicketNumber] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(allDates.filter(id=>id!='null')[0]);
+  const [selectedTickets,setSelectedTickets] = useState(tickets);
+
+  useEffect(()=>{
+    axios.get(`/api/tickets?date=${selectedDate}`)
+    .then((response) => {
+      setSelectedTickets(response.data);
+    });
+  },[selectedDate])
 
   async function addNewTicket() {
     if (_.isEmpty(name.trim()) || _.isEmpty(ticketNumber)) {
@@ -44,10 +55,9 @@ export default function Tickets(props) {
   }
 
   function sortTicketsMap() {
-    return Object.keys(tickets || {}).sort(
+    return Object.keys(selectedTickets || {}).sort(
         (name1, name2) => name1.localeCompare(name2));
   }
-
   return (
       <div className={styles.container} dir="rtl">
         <Header/>
@@ -56,12 +66,29 @@ export default function Tickets(props) {
                         isInvalid={_.isEmpty(name.trim())}
                         onChange={(e) => setName(e.target.value)}/>
           <Form.Control className="me-auto" placeholder="מספר כרטיס"
-                        type="number" style={{width: "20%"}}
+                        type="number" style={{width: "40%"}}
                         isInvalid={_.isEmpty(ticketNumber)}
                         onChange={(e) => setTicketNumber(e.target.value)}/>
           <Button variant="secondary" onClick={addNewTicket}>הוסף</Button>
           <div className="vr"/>
         </Stack>
+        <div>
+          <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              {selectedDate}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              {
+                allDates.filter(id=>id!='null').sort(
+                    (date1, date2) => date2 -date1).map((date) => {
+                  return <Dropdown.Item key={date} onClick={()=>setSelectedDate(date)}>{date}</Dropdown.Item>
+                })
+              }
+            </Dropdown.Menu>
+          </Dropdown>
+        </div>
+
         <hr/>
         <Table striped bordered hover variant="dark">
           <thead>
@@ -81,7 +108,7 @@ export default function Tickets(props) {
                     <td>
                       <ul>
                         {
-                          tickets[name].map(ticket => {
+                          selectedTickets[name].map(ticket => {
                             return <li key={ticket}>{ticket}</li>
                           })
 
