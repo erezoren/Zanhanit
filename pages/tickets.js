@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css'
-import {getAllDates, getTickets} from '../lib/ticketsHandler';
+import {getAllTicketsDates, getTickets} from '../lib/ticketsHandler';
 import {useEffect, useState} from 'react';
 import {db} from "../firebase/clientApp";
 import {doc, getDoc, setDoc} from 'firebase/firestore'
@@ -16,7 +16,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       tickets: await getTickets(dateStamp()),
-      allDates: await getAllDates()
+      allDates: await getAllTicketsDates()
     },
   }
 }
