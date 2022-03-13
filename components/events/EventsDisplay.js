@@ -9,8 +9,8 @@ export const EventsDisplay = ({selectedEvents}) => {
             selectedEvents.events
             && selectedEvents.events.map(
                 (event, idx) => {
-                  return <Col sm={"auto"}>
-                    <Card style={{width: '18rem'}} key={idx}>
+                  return <Col sm={"auto"} key={idx}>
+                    <Card style={{width: '18rem'}}>
                       <Card.Img variant="top" src={event.image_url}/>
                       <Card.Body>
                         <Card.Title>{event.title}</Card.Title>

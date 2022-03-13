@@ -7,7 +7,7 @@ import {getAllEventDates, getEvents} from "../lib/eventsHandler";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {TicketsTable} from "../components/tickets/TicketsTable";
-import {EventsDisplay} from "../components/tickets/EventsDisplay";
+import {EventsDisplay} from "../components/events/EventsDisplay";
 
 export async function getServerSideProps(context) {
   return {
