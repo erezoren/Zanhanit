@@ -11,18 +11,16 @@ export default function Admin(props) {
       <div className={styles.container}>
         <Header/>
         {user && <Profile/>}
-        <h3 className="title">
-          Read{' '}
+        <h6 className="title">
           <Link href="/api/auth/login">
             <a>Login</a>
           </Link>
-        </h3>
-        <h3 className="title">
-          Read{' '}
+        </h6>
+        <h6 className="title">
           <Link href="/api/auth/logout">
             <a>Logout</a>
           </Link>
-        </h3>
+        </h6>
         <div className={styles.container} dir="rtl">
           <p>הוספת אירוע</p>
         </div>
