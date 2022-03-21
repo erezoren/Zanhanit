@@ -1,5 +1,6 @@
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
+import {Image} from "react-bootstrap";
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -9,10 +10,13 @@ export default function Profile() {
 
   return (
       user && (
-          <div>
-            <img src={user.picture} alt={user.name} />
-            <h2>{user.name}</h2>
-            <p>{user.email}</p>
+          <div dir={"ltr"}>
+            <Image fluid={true} roundedCircle={true}
+                   src={user.picture}
+                   alt={user.name}
+                   title={user.name}
+                   width={"60px"}
+            />
           </div>
       )
   );

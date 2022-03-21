@@ -3,10 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import {useState} from "react";
 import {Logo} from "./Logo";
+import {useUser} from "@auth0/nextjs-auth0";
+import Profile from "./Profile";
 
 export const Header = (props) => {
 
-  const [date, setDate] = useState(new Date().toString())
+  const [date, setDate] = useState(new Date().toString());
+  const {user} = useUser();
 
   setInterval(() => {
     setDate(new Date().toString())
@@ -28,6 +31,7 @@ export const Header = (props) => {
                 <Nav.Link href="/protocols">נהלים</Nav.Link>
                 <Nav.Link href="/admin">Admin</Nav.Link>
               </Nav>
+              {user && <Profile/>}
             </Navbar.Collapse>
           </Container>
         </Navbar>
