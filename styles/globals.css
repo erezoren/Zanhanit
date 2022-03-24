@@ -22,3 +22,7 @@ a {
 .color-nav{
   background-color: #e4ddca;
 }
+
+.eventDataPicker{
+  width: 20%;
+}
