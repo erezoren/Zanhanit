@@ -28,6 +28,7 @@ export const Header = (props) => {
                 <Nav.Link href="/tickets">כרטיסים</Nav.Link>
                 <Nav.Link href="/pictures">תמונות</Nav.Link>
                 <Nav.Link href="/events">אירועים</Nav.Link>
+                <Nav.Link href="/barmens">ברמנים/יות</Nav.Link>
                 <Nav.Link href="/protocols">נהלים</Nav.Link>
                 <Nav.Link href="/admin">Admin</Nav.Link>
               </Nav>

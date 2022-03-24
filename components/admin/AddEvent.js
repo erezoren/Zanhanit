@@ -6,6 +6,7 @@ import {useState} from "react";
 import moment from "moment";
 import {doc, getDoc, setDoc} from "firebase/firestore";
 import {db} from "../../firebase/clientApp";
+import {COLLECTIONS} from "../common/constants";
 
 let _ = require('lodash/core');
 
@@ -36,13 +37,13 @@ export const AddEvent = (props) => {
     }
     let events = await getEventsByDate(eventDate);
     events.push(newEvent);
-    await setDoc(doc(db, "events", eventDate), {['events']: events},
+    await setDoc(doc(db, COLLECTIONS.EVENTS, eventDate), {['events']: events},
         {merge: true});
     resetForm();
   }
 
   const getEventsByDate = async (date) => {
-    const eventsRef = doc(db, 'events', date);
+    const eventsRef = doc(db, COLLECTIONS.EVENTS, date);
     let events = await getDoc(eventsRef);
     return events.data() ? (events.data()['events'] || []) : [];
   }
