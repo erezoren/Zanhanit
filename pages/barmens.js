@@ -25,7 +25,7 @@ export default function Barmens(props) {
               barmens.sort((b1, b2) => {
                 return b2.date.localeCompare(b1.date)
               }).map((bm,idx) => {
-                return <Accordion.Item eventKey={idx}>
+                return <Accordion.Item eventKey={idx} key={idx}>
                   <Accordion.Header>{bm.date}</Accordion.Header>
                   <Accordion.Body>
                   <ul>
