@@ -18,7 +18,7 @@ export default function Home(props) {
 ניפגש כל יום חמישי, פתיחת דלתות החל מ21:30. כניסה מגיל 18 ומעלה.
 </p>
 <p>
-מוזמנים להצטרף לקבוצת <a target={"_blank"}
+מוזמנים להצטרף לקבוצת <a target={"_blank"} rel="noreferrer"
     href={"https://chat.whatsapp.com/BEMYlcCqBtIAEDDehz50zD"}>הוואטסאפ</a> לקבלת עדכונים שוטפים:
 </p>
 <p>
