@@ -4,10 +4,8 @@ import {Image} from "react-bootstrap";
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
-
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-
   return (
       user && (
           <div dir={"ltr"}>
