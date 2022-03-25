@@ -7,7 +7,6 @@ export const DatesDropdown=({allDatesSorted,setSelectedDate,selectedDate})=>{
         <Dropdown.Toggle variant="warning" id="dropdown-basic">
           {selectedDate}
         </Dropdown.Toggle>
-
         <Dropdown.Menu>
           {
             allDatesSorted.map((date) => {

@@ -41,11 +41,11 @@ export const AddTicket = ({setNonce, selectedDate}) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}/>
           <Form.Control className="me-auto" placeholder="מספר כרטיס"
-                        type="number" style={{width: "40%"}}
+                        type="number" style={{width: "56%"}}
                         isInvalid={_.isEmpty(ticketNumber) || ticketNumber == 0}
                         value={ticketNumber}
                         onChange={(e) => setTicketNumber(e.target.value)}/>
-          <Button variant="secondary" onClick={addNewTicket}>הוסף</Button>
+          <Button style={{width: "15%"}} variant="secondary" onClick={addNewTicket}>הוסף</Button>
           <div className="vr"/>
         </Stack>
 

@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import homeStyle from '../styles/home-page.module.css'
 import {Header} from "../components/common/Header";
-import {DatesDropdown} from "../components/tickets/DatesDropdown";
+import {DatesDropdown} from "../components/common/DatesDropdown";
 import {dateStamp} from "../lib/common_utils";
 import {getAllEventDates, getEvents} from "../lib/eventsHandler";
 import {useEffect, useState} from "react";
@@ -25,7 +25,6 @@ export default function Events(props) {
   const [nonce, setNonce] = useState(0);
 
   useEffect(() => {
-    debugger
     axios.get(`/api/events?date=${selectedDate}`)
     .then((response) => {
       setSelectedEvents(response.data);
