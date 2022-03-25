@@ -29,8 +29,8 @@ export default function Barmens(props) {
                   <Accordion.Header>{bm.date}</Accordion.Header>
                   <Accordion.Body>
                   <ul>
-                    {bm.barmens.map(name => {
-                      return <li>{name}</li>
+                    {bm.barmens.map((name,idx) => {
+                      return <li key={"n"+idx}>{name}</li>
                     })}
                   </ul>
                   </Accordion.Body>
