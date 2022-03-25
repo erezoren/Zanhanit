@@ -30,7 +30,7 @@ export default function Barmens(props) {
                   <Accordion.Body>
                   <ul>
                     {bm.barmens.map((name,idx) => {
-                      return <li key={"n"+idx}>{name}</li>
+                      return <li key={`n${idx}`}>{name}</li>
                     })}
                   </ul>
                   </Accordion.Body>
