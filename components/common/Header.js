@@ -17,11 +17,11 @@ export const Header = (props) => {
 
   return (
       <div dir={"rtl"}>
-        <Navbar className="color-nav" bg="light" expand="lg" dir={"rtl"}>
+        <Navbar expand="lg" dir={"rtl"} >
           <Container>
-            <Logo/>
             <Navbar.Brand href="#home">פאב הצנחנית - להבות חביבה</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+            <Navbar.Toggle><Logo/></Navbar.Toggle>
+            {user && <Profile/>}
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/">בית</Nav.Link>
@@ -29,9 +29,8 @@ export const Header = (props) => {
                 <Nav.Link href="/pictures">תמונות</Nav.Link>
                 <Nav.Link href="/events">אירועים</Nav.Link>
                 <Nav.Link href="/protocols">נהלים</Nav.Link>
-                <Nav.Link href="/admin">Admin</Nav.Link>
+                <Nav.Link href="/admin">ניהול</Nav.Link>
               </Nav>
-              {user && <Profile/>}
             </Navbar.Collapse>
           </Container>
         </Navbar>
