@@ -2,13 +2,13 @@ import styles from '../styles/Home.module.css'
 import homeStyle from '../styles/home-page.module.css'
 import {Header} from "../components/common/Header";
 import {Image} from "react-bootstrap";
-import map from "../images/map.jpeg"
+import directions from "../images/map.jpeg"
 
 export default function Home(props) {
-  return (
-      <div className={styles.container}>
-        <Header/>
-        <div className={styles.container} dir="rtl">
+    return (
+        <div className={styles.container}>
+            <Header/>
+            <div className={styles.container} dir="rtl">
           <span className={homeStyle.welcomeText}>
             <p>אהלן חברים, ברוכים הבאים לאתר הפאב הקהילתי של להבות חביבה - פאב הצנחנית!</p>
 <p>
@@ -19,7 +19,7 @@ export default function Home(props) {
 </p>
 <p>
 מוזמנים להצטרף לקבוצת <a target={"_blank"} rel="noreferrer"
-    href={"https://chat.whatsapp.com/BEMYlcCqBtIAEDDehz50zD"}>הוואטסאפ</a> לקבלת עדכונים שוטפים:
+                         href={"https://chat.whatsapp.com/BEMYlcCqBtIAEDDehz50zD"}>הוואטסאפ</a> לקבלת עדכונים שוטפים:
 </p>
 <p>
 הגשת שתיה בבר תהיה מול כרטיסיות שאפשר להזמין דרך שרון במזכירות, דרך המייל או הטלפון. כל כרטיסיה עולה 50 ש&quot;ח (ירד מכרטיס החבר). נא לציין איפה תרצו לקבל את הכרטיסיה: בדואר / במזכירות / בבר
@@ -34,9 +34,11 @@ export default function Home(props) {
 צניחה נעימה 😉
 </p>
 </span>
-          <p>איך מגיעים?</p>
-        <Image src={map}/>
- </div>
-      </div>
-  )
+                <h2>איך לעזאזל מגיעים?</h2>
+                <div>
+                    <Image src={directions.src} fluid={true}/>
+                </div>
+            </div>
+        </div>
+    )
 }
