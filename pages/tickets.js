@@ -5,7 +5,7 @@ import {dateStamp} from "../lib/common_utils";
 import {Header} from "../components/common/Header";
 import axios from "axios";
 import {TicketsTable} from "../components/tickets/TicketsTable";
-import {DatesDropdown} from "../components/tickets/DatesDropdown";
+import {DatesDropdown} from "../components/common/DatesDropdown";
 import {AddTicket} from "../components/tickets/AddTicket";
 
 let _ = require('lodash/core');
@@ -37,6 +37,7 @@ export default function Tickets(props) {
       <div className={styles.container} dir="rtl">
         <Header/>
         <AddTicket setNonce={setNonce} selectedDate={selectedDate}/>
+        <br/>
         <div>
           <DatesDropdown allDatesSorted={allDatesSorted}
                          selectedDate={selectedDate}
