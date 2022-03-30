@@ -21,8 +21,8 @@ export async function getServerSideProps(context) {
 
 export default function Tickets(props) {
   const {tickets, allDates} = props;
-  const allDatesSorted = allDates.filter(id => id != 'null').sort().reverse();
-  const [selectedDate, setSelectedDate] = useState(allDatesSorted[0]);
+  const allDatesFiltered = allDates.filter(id => id != 'null');
+  const [selectedDate, setSelectedDate] = useState(allDatesFiltered[0]);
   const [selectedTickets, setSelectedTickets] = useState(tickets);
   const [nonce, setNonce] = useState(0);
 
@@ -39,7 +39,7 @@ export default function Tickets(props) {
         <AddTicket setNonce={setNonce} selectedDate={selectedDate}/>
         <br/>
         <div>
-          <DatesDropdown allDatesSorted={allDatesSorted}
+          <DatesDropdown allDates={allDatesFiltered}
                          selectedDate={selectedDate}
                          setSelectedDate={setSelectedDate}/>
         </div>

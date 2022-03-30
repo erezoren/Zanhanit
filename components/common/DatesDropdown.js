@@ -1,16 +1,30 @@
 import {Dropdown} from "react-bootstrap";
+import moment from "moment";
+import {useEffect, useState} from "react";
 
-export const DatesDropdown=({allDatesSorted,setSelectedDate,selectedDate})=>{
+export const DatesDropdown = ({allDates, setSelectedDate, selectedDate}) => {
 
-  return(
+  const [sortedSated, setSortedDates] = useState([]);
+  useEffect(() => {
+    let sorted = allDates.sort((d1, d2) => {
+      let m1 = moment(d1.date, "DD-MM-YYYY");
+      let m2 = moment(d2.date, "DD-MM-YYYY")
+      return m2 - m1;
+    });
+    console.log(sorted)
+    setSortedDates(sorted)
+  }, [allDates])
+
+  return (
       <Dropdown>
         <Dropdown.Toggle variant="warning" id="dropdown-basic">
           {selectedDate}
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {
-            allDatesSorted.map((date) => {
-              return <Dropdown.Item key={date} onClick={()=>setSelectedDate(date)}>{date}</Dropdown.Item>
+            sortedSated.map((date) => {
+              return <Dropdown.Item key={date} onClick={() => setSelectedDate(
+                  date)}>{date}</Dropdown.Item>
             })
           }
         </Dropdown.Menu>

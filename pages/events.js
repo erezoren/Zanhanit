@@ -19,8 +19,8 @@ export async function getServerSideProps(context) {
 
 export default function Events(props) {
   const {events, allDates} = props;
-  const allDatesSorted = allDates.filter(id => id != 'null').sort().reverse();
-  const [selectedDate, setSelectedDate] = useState(allDatesSorted[0]);
+  const allDatesFiltered = allDates.filter(id => id != 'null');
+  const [selectedDate, setSelectedDate] = useState(allDatesFiltered[0]);
   const [selectedEvents, setSelectedEvents] = useState(events);
   const [nonce, setNonce] = useState(0);
 
@@ -38,7 +38,7 @@ export default function Events(props) {
           <span className={homeStyle.welcomeTitle}><h3 className="display-1">אירועים קרובים</h3></span>
 
           <div>
-            <DatesDropdown allDatesSorted={allDatesSorted}
+            <DatesDropdown allDates={allDatesFiltered}
                            selectedDate={selectedDate}
                            setSelectedDate={setSelectedDate}/>
           </div>
