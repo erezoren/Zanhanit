@@ -3,6 +3,7 @@ import homeStyle from '../styles/home-page.module.css'
 import {Header} from "../components/common/Header";
 import {getBarmens} from "../lib/barmensHandler";
 import {Accordion} from "react-bootstrap";
+import moment from "moment";
 
 export async function getServerSideProps(context) {
   return {
@@ -23,7 +24,9 @@ export default function Barmens(props) {
           <Accordion defaultActiveKey="0" flush alwaysOpen>
             {
               barmens.sort((b1, b2) => {
-                return b2.date.localeCompare(b1.date)
+               let m1  = moment(b1.date, "DD-MM-YYYY");
+               let m2 =   moment(b2.date, "DD-MM-YYYY")
+                return m2 - m1;
               }).map((bm,idx) => {
                 return <Accordion.Item eventKey={idx} key={idx}>
                   <Accordion.Header>{bm.date}</Accordion.Header>
