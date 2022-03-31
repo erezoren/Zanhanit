@@ -35,7 +35,7 @@ export default function Events(props) {
       <div className={styles.container}>
         <Header/>
         <div className={styles.container} dir="rtl">
-          <span className={homeStyle.welcomeTitle}><h3 className="display-1">אירועים קרובים</h3></span>
+          <span className={homeStyle.welcomeTitle}><h3 className="display-5">אירועים קרובים</h3></span>
 
           <div>
             <DatesDropdown allDates={allDatesFiltered}

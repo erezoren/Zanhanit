@@ -20,7 +20,7 @@ export default function Barmens(props) {
         <Header/>
         <div className={styles.container} dir="rtl">
           <span className={homeStyle.welcomeTitle}><h3
-              className="display-1">ברמנים/יות</h3></span>
+              className="display-5">ברמנים/יות</h3></span>
           <Accordion defaultActiveKey="0" flush alwaysOpen>
             {
               barmens.sort((b1, b2) => {
