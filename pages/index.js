@@ -36,7 +36,7 @@ export default function Home(props) {
 </span>
                 <h2>איך לעזאזל מגיעים?</h2>
                 <div>
-                    <Image src={directions.src} fluid={true}/>
+                    <Image style={{marginBottom: "30px"}} src={directions.src} fluid={true}/>
                 </div>
             </div>
         </div>
