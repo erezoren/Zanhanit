@@ -45,7 +45,7 @@ export const AddTicket = ({setNonce, selectedDate}) => {
                         isInvalid={_.isEmpty(ticketNumber) || ticketNumber == 0}
                         value={ticketNumber}
                         onChange={(e) => setTicketNumber(e.target.value)}/>
-          <Button style={{width: "15%"}} variant="secondary" onClick={addNewTicket}>הוסף</Button>
+          <Button style={{width: "20%"}} variant="secondary" onClick={addNewTicket}>הוסף</Button>
           <div className="vr"/>
         </Stack>
 
