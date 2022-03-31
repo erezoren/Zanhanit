@@ -26,8 +26,8 @@ export default function Pictures(props) {
   return (
       <div className={styles.container} dir="rtl">
         <Header/>
+        <h3>ניתן ללחוץ על תמונה כדי לצפות בה בסבבה</h3>
         <div style={{textAlign: "center"}}>
-
           <Carousel variant="dark" fade={true} pause={false}>
             {pictures.filter(
                 pic => pic.toLowerCase().endsWith(".jpg") || pic.endsWith(
