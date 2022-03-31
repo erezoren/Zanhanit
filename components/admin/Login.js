@@ -1,17 +1,17 @@
-import Link from 'next/link'
-export const Login=(props)=>{
-  return(
+import {useUser} from "@auth0/nextjs-auth0";
+import {Button} from "react-bootstrap";
+
+export const Login = (props) => {
+  const {user, error, isLoading} = useUser();
+
+  return (
       <div>
-        <h6 className="title">
-          <Link href="/api/auth/login">
-            <a>Login</a>
-          </Link>
-        </h6>
-        <h6 className="title">
-          <Link href="/api/auth/logout">
-            <a>Logout</a>
-          </Link>
-        </h6>
+        {!user && <h6 className="title">
+          <Button variant="warning" href="/api/auth/login">Login</Button>
+        </h6>}
+        {user && <h6 className="title">
+          <Button variant="warning" href="/api/auth/logout">Logout</Button>
+        </h6>}
       </div>
   )
 }

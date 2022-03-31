@@ -21,7 +21,6 @@ export const Header = (props) => {
           <Container>
             <Navbar.Brand href="#home">פאב הצנחנית - להבות חביבה</Navbar.Brand>
             <Navbar.Toggle><Logo/></Navbar.Toggle>
-            {user && <Profile/>}
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                 <Nav.Link href="/">בית</Nav.Link>
@@ -33,6 +32,7 @@ export const Header = (props) => {
                 <Nav.Link href="/admin">ניהול</Nav.Link>
               </Nav>
             </Navbar.Collapse>
+            {user && <Profile/>}
           </Container>
         </Navbar>
         <p>{date}</p>
