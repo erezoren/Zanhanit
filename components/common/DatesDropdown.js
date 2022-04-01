@@ -14,7 +14,7 @@ export const DatesDropdown = ({allDates, setSelectedDate, selectedDate}) => {
     });
     setSelectedDate(sorted[0])
     setSortedDates(sorted)
-  }, [allDates])
+  }, [allDates,selectedDate])
 
   return (
       <Dropdown>
