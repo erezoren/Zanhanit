@@ -2,7 +2,7 @@ import {useUser} from "@auth0/nextjs-auth0";
 import {Button} from "react-bootstrap";
 
 export const Login = (props) => {
-  const {user, error, isLoading} = useUser();
+  const {user} = useUser();
 
   return (
       <div>
