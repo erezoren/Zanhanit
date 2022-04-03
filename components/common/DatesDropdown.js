@@ -9,12 +9,10 @@ export const DatesDropdown = ({allDates, setSelectedDate, selectedDate}) => {
     let sorted = allDates.sort((d1, d2) => {
       let m1 = moment(d1, "DD-MM-YYYY");
       let m2 = moment(d2, "DD-MM-YYYY")
-      debugger
       return m2 - m1;
     });
-    setSelectedDate(sorted[0])
     setSortedDates(sorted)
-  }, [allDates,selectedDate])
+  }, [allDates])
 
   return (
       <Dropdown>

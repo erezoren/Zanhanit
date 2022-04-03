@@ -44,7 +44,8 @@ export default function Tickets(props) {
                          setSelectedDate={setSelectedDate}/>
         </div>
         <hr/>
-        <TicketsTable selectedTickets={selectedTickets}/>
+        <TicketsTable selectedTickets={selectedTickets} exportFileName={selectedDate}/>
+
       </div>
   )
 
