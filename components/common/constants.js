@@ -3,3 +3,8 @@ export const COLLECTIONS = {
   EVENTS:'events',
   BARMENS:'barmens'
 }
+
+
+export const PERMISSIONS = {
+  ADMIN:'read:auth',
+}

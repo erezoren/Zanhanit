@@ -5,10 +5,10 @@ import {Image} from "react-bootstrap";
 import directions from "../images/map.jpeg"
 
 export default function Home(props) {
-    return (
-        <div className={styles.container}>
-            <Header/>
-            <div className={styles.container} dir="rtl">
+  return (
+      <div className={styles.container}>
+        <Header/>
+        <div className={styles.container} dir="rtl">
           <span className={homeStyle.welcomeText}>
             <p>אהלן חברים, ברוכים הבאים לאתר הפאב הקהילתי של להבות חביבה - פאב הצנחנית!</p>
 <p>
@@ -34,11 +34,12 @@ export default function Home(props) {
 צניחה נעימה 😉
 </p>
 </span>
-                <h2>איך לעזאזל מגיעים?</h2>
-                <div>
-                    <Image style={{marginBottom: "30px"}} src={directions.src} fluid={true}/>
-                </div>
-            </div>
+          <h2>איך לעזאזל מגיעים?</h2>
+          <div>
+            <Image style={{marginBottom: "30px"}} src={directions.src}
+                   fluid={true}/>
+          </div>
         </div>
-    )
+      </div>
+  )
 }
