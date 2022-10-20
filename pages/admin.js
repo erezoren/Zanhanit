@@ -7,7 +7,6 @@ import {useEffect, useState} from "react";
 import {useUser} from "@auth0/nextjs-auth0";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import {isEqual} from 'lodash'
 import {PERMISSIONS} from "../components/common/constants";
 
 export default function Admin(props) {
@@ -15,8 +14,9 @@ export default function Admin(props) {
   useEffect(() => {
     axios.get('/api/auth')
     .then((response) => {
+      console.log(response.data.accessToken)
       setPermissions(jwt_decode(response.data.accessToken).permissions);
-    }).catch(error=>{
+    }).catch(error => {
       console.log(error)
     });
 
@@ -27,6 +27,9 @@ export default function Admin(props) {
       <div className={styles.container}>
         <Header/>
         <Login/>
+        {!user &&
+        <h1 style={{direction:"rtl"}}>צריך להתחבר כדי לעשות פעולות כאן</h1>
+        }
         {user && permissions.includes(PERMISSIONS.ADMIN) && <div>
           <AddEvent/>
           <hr/>
@@ -34,7 +37,9 @@ export default function Admin(props) {
           <hr/>
           <AddBarmens/>
         </div>}
-        {/*<p>{permissions.toString()}</p>*/}
+        {user && !permissions.includes(PERMISSIONS.ADMIN) &&
+        <h1 style={{direction:"rtl"}}>יש דרג ויש.....את/ה לא מורשה לעשות שינויים</h1>
+        }
       </div>
   )
 

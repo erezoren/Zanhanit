@@ -3,8 +3,9 @@ import {getAccessToken, withApiAuthRequired} from '@auth0/nextjs-auth0';
 export default withApiAuthRequired(async function handler(req, res) {
   try {
     const {accessToken} = await getAccessToken(req, res, {
+      scopes: ['read:auth'],
       audience: process.env.AUTH0_AUDIENCE,
-      grant_type:"client_credentials"
+      customScopeKey: 'permissions'
     });
     res.status(200).json({accessToken});
   } catch (error) {
