@@ -7,21 +7,9 @@ import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 export async function getServerSideProps(context) {
   return {
     props: {
-      all: await getAllContent()
+      allProtocols: await getAllContent()
     },
   }
-}
-
-const traverseContent = (all, content_arr) => {
-  if (all == undefined) {
-    return;
-  }
-  all.forEach(item => {
-    content_arr.push(<div>{item.nodeType}</div>)
-    traverseContent(item.content, content_arr)
-  })
-  return content_arr;
-
 }
 
 const Bold = ({children}) => <span className="bold">{children}</span>;
@@ -37,43 +25,19 @@ const options = {
   },
 };
 
-const richTextDocument = {
-  nodeType: 'document',
-  data: {},
-  content: [
-    {
-      nodeType: 'paragraph',
-      data: {},
-      content: [
-        {
-          nodeType: 'text',
-          value: 'Hello',
-          data: {},
-          marks: [{type: 'bold'}],
-        },
-        {
-          nodeType: 'text',
-          value: ' world!',
-          data: {},
-          marks: [{type: 'italic'}],
-        },
-      ],
-    },
-  ],
-};
 export default function Protocols(props) {
   debugger
-  const {all} = props;
+  const {allProtocols} = props;
 
   return (
       <div className={styles.container}>
         <Header/>
         <div style={{direction: "rtl"}}>
-          {documentToReactComponents(all[0].fields.closingThePub, options)}
+          {documentToReactComponents(allProtocols[0].fields.closingThePub, options)}
         </div>
         <hr/>
         <div style={{direction: "rtl"}}>
-          {documentToReactComponents(all[2].fields.closingThePub, options)}
+          {documentToReactComponents(allProtocols[2].fields.closingThePub, options)}
         </div>
       </div>
   )
